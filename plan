@@ -1,0 +1,21 @@
+Step 1:
+
+Contract that a person can send an amount with a specific message (message = "message") and deposit money
+Same person needs to send a second message and get all the money returned to them
+
+Step 2:
+Include ability to display all the messages and money in browser, including past ones
+
+Step 3:
+Same as step 2, but another person can send a message(0 or 1) to the same contract, using the same question id
+note, if the second message by question owner has been sent, this has to fail
+
+Step 4: 
+display the number of 0s and 1s sent
+when the owner sends the second message recorde the amount of eth that each of the answeres have in the accounts at the moment
+
+Step 5:
+Instead of returning eth to the owner, return it to the answerers (including the owner, if they answered)
+
+Step 6:
+Make the plan for delegation 
