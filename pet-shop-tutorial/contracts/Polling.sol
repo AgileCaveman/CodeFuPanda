@@ -10,7 +10,7 @@ contract Polling {
 
 	mapping(address => Question) questions;
 
-	function Polling(string q_string) public payable {
+	function StartPolling(string q_string) public payable {
 		//TODO: do not replace question if it's present
 		if(questions[msg.sender].enabled) {
 			return;
