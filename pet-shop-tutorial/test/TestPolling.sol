@@ -9,8 +9,16 @@ contract TestPolling {
   Polling polling = Polling(DeployedAddresses.Polling());
   
   function testPollAndRemove() public {
-//	polling.StartPolling.value(1000)("question1");
-//  	polling.ResolveQuestion();
+//	poling.send(0.1 ether).then	
+
+	polling.StartPolling("question1");
+  	polling.ResolveQuestion();
+
+
+	//DeployedAddresses.Polling().transfer(100000);
+// 
+	//polling.depositFunds.value(1 ether)();
+
   }
 
 }

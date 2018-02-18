@@ -10,13 +10,28 @@ contract Polling {
 
 	mapping(address => Question) questions;
 
-	function StartPolling(string q_string) public payable {
-		//TODO: do not replace question if it's present
-		if(questions[msg.sender].enabled) {
+
+// thoughts -
+// deposit funds separately 
+// create question separately
+// 
+	function () public payable {
+		if(!questions[msg.sender].enabled) {
 			return;
                 }
-		Question memory currentQuestion = Question(msg.sender, q_string, msg.value, true);
+		questions[msg.sender].amount += msg.value;
+	}
+
+	function StartPolling(string q_string) returns(bool success) {
+		//TODO: do not replace question if it's present
+		
+		if(questions[msg.sender].enabled) {
+			return true;
+                }
+
+		Question memory currentQuestion = Question(msg.sender, q_string, 0, true);
 		questions[msg.sender] = currentQuestion;
+		return true;
 	}
 
 	function ResolveQuestion() public {
@@ -29,6 +44,8 @@ contract Polling {
 		uint amount = questions[owner].amount;
 		questions[owner].amount = 0;
 		questions[owner].enabled = false;
-		msg.sender.transfer(amount);
+		if (amount > 0) {
+			msg.sender.transfer(amount);
+		}
 	}
 }
