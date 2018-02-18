@@ -8,7 +8,7 @@ contract TestPolling {
   
   Polling polling = Polling(DeployedAddresses.Polling());
   
-  function testPollAndRemove() {
+  function testPollAndRemove() public {
 	polling.StartPolling.value(1000)("question1");
   	polling.ResolveQuestion();
   }
